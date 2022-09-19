@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cz.blogtwo.mapper.AboutMapper">
+
+    <resultMap id="about" type="com.cz.blogtwo.entity.About">
+        <id property="id" column="id"/>
+        <result property="nameEn" column="name_en"/>
+        <result property="nameZh" column="name_zh"/>
+        <result property="value" column="value"/>
+    </resultMap>
+    <update id="updateAbout">
+        update about set value=#{value} where name_en=#{nameEn}
+    </update>
+    <select id="getAboutList" resultMap="about">
+        select id,name_en,name_zh,value from about order by id desc
+    </select>
+
+    <select id="getList" resultMap="about">
+        select * from about
+    </select>
+</mapper>
